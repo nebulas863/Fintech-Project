@@ -1,5 +1,3 @@
-let getStartedInp = document.querySelector('.form-name')
-
 function takeToSignUp() {
     window.location.href = "./pages/signup.html";
 
@@ -7,11 +5,20 @@ function takeToSignUp() {
 
 }
 
-let learnMoreBtn = document.querySelector('.learn-more-btn');
+let getStartedInp = document.querySelector('.cta')
 
-function takeToSignUp () {
-    window.location.href = "./pages/signup.html";
-}
+getStartedInp.addEventListener('click', takeToSignUp);
+
+
+let learnMoreBtn = document.querySelectorAll('.learn-button');
+
+learnMoreBtn.forEach(button => {
+    button.addEventListener('click', takeToSignUp);
+});
+
+let joinSyca = document.querySelector('.join-sycamore');
+
+joinSyca.addEventListener('click', takeToSignUp);
 
 
 function openToggle() {

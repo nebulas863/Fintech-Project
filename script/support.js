@@ -1,5 +1,10 @@
+
+let getStartedInp = document.querySelector('.cta')
+
 function directBtn() {
     window.location.href = "../pages/signup.html";
+
+    getStartedInp.value = '';
 }
 
 
