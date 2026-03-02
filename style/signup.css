@@ -1,0 +1,427 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+.main-section {
+    display: flex;
+    gap: 70px;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+
+.section-left {
+    /* border: 1px solid red; */
+    width: 56%;
+     border-radius: 20px;
+}
+
+.section-left-top {
+    background-color: #297CAC;
+    padding-block: 80px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.inside-left-div {
+    background-color: #EDF8FD;
+    border-radius: 20px;
+    width: 80%;
+    margin: auto;
+    padding: 25px;
+}
+
+.adeola-flex {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+
+.inside-h3 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+     font-size: 13px;
+    font-weight: 500;
+    line-height: 19px;
+    color: rgb(7, 48, 66);
+}
+
+.adeola-img {
+    width: 10%;
+    border-radius: 50%;
+}
+
+
+.sme-owner {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 15px;
+    color: rgb(7, 48, 66);
+}
+
+
+/*  */
+.section-left-bottom {
+    background-color: #062937;
+    padding-block: 30px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.syca-finan {
+    width: 80%;
+    margin: auto;
+}
+
+.syca-img {
+    width: 20%;
+}
+
+.bottom-h1 {
+    margin-top: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 33px;
+    font-weight: 700;
+    line-height: 48px;
+    color: rgb(255, 255, 255);
+    width: 80%;
+}
+
+
+
+.section-right {
+    width: 45%;
+    /* border: 1px solid palevioletred; */
+    padding: 10px;
+    padding-block: 50px;
+}
+
+.help {
+    
+    background-color: #8D8B96;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 19px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.help:hover {
+    background-color: #3D8F5F;
+    transition: all 0.3s ease;
+    transform: translateY(-4px);
+}
+
+.ready-h2 {
+    margin-top: 30px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 33px;
+    color: rgb(7, 48, 66);
+}
+
+.ready-p {
+    margin: 10px 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 23px;
+    color: rgb(103, 100, 114);
+}
+
+/* .get-mail {
+    
+    padding: 20px 0;
+    padding-left: 5px;
+} */
+
+.email {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 23px;
+    color: rgb(7, 48, 66);
+}
+/* 
+.form-name {
+    width: 80%;
+    padding: 20px 10px;
+    border-radius: 8px;
+    margin-top: 20px;
+
+} */
+/* 
+.cta {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    color: rgb(255, 255, 255);
+    background-color: #71B0D1;
+    padding: 15px 25px;
+    border-radius: 10px;
+    margin-top: 50px;
+    width: 80%;
+} */
+
+
+/* =========================
+   FORM AREA (GET-MAIL ↓)
+========================= */
+
+.get-mail {
+    margin-top: 25px;
+    width: 100%;
+    max-width: 420px;
+}
+
+/* Form Layout */
+.form-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Remove inline spacing dependency */
+.form-form div {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels */
+.form-form label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: rgb(7, 48, 66);
+}
+
+/* Inputs */
+.form-form input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: 1px solid #d8dee5;
+    background-color: #f9fbfc;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+/* Focus Effect */
+.form-form input:focus {
+    outline: none;
+    border-color: #297CAC;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(41,124,172,0.12);
+}
+
+/* Submit Button */
+.cta {
+    width: 100%;
+    padding: 16px;
+    margin-top: 10px;
+    border-radius: 12px;
+    border: none;
+    background: #297CAC;
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.cta:hover {
+    background: #1f678f;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* Sign In Secondary Button */
+#get-mail button,
+#signIn {
+    width: 100%;
+}
+
+#signIn {
+    margin-top: 15px;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #297CAC;
+    background: transparent;
+    color: #297CAC;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+#signIn:hover {
+    background: #297CAC;
+    color: white;
+}
+
+
+
+
+
+/* media query */
+
+/* Media Queries at 980px */
+@media (max-width:980px) {
+    .main-section {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    }
+
+    .section-left {
+        /* border: 1px solid red; */
+        width: 50%;
+        border-radius: 20px;
+    }
+
+
+    .syca-finan {
+        width: 80%;
+        margin: auto;
+    }
+
+    .syca-img {
+       width: 30%;
+    }
+
+    .bottom-h1 {
+        margin-top: 20px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 26px;
+        font-weight: 700;
+        line-height: 43px;
+        color: rgb(255, 255, 255);
+        width: 90%;
+}
+
+
+    .section-right {
+        width: 50%;
+        /* border: 1px solid palevioletred; */
+        padding: 10px;
+        padding-block: 50px;
+    }
+
+
+    .ready-h2 {
+    margin-top: 30px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 28px;
+    color: rgb(7, 48, 66);
+}
+
+    .ready-p {
+        margin: 10px 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 20px;
+        color: rgb(103, 100, 114);
+    }
+
+
+    /* .form-name {
+    width: 90%;
+    padding: 20px 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+
+    }
+
+.cta {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    color: rgb(255, 255, 255);
+    background-color: #71B0D1;
+    padding: 15px 25px;
+    border-radius: 10px;
+    margin-top: 50px;
+    width: 90%;
+} */
+
+
+}
+
+
+
+
+/* Media Queries at 690px */
+@media (max-width:690px) {
+
+    .section-left {
+        display: none;
+    }
+
+
+    .section-right {
+        width: 100%;
+    }
+
+    /* .form-name {
+    width: 95%;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+
+    }
+
+    .cta {
+        width: 90%;
+        margin-top: 70px;
+    } */
+
+    @media (max-width:690px) {
+
+    .section-left {
+        display: none;
+    }
+
+    .section-right {
+        width: 100%;
+        padding: 30px 15px;
+    }
+
+    .get-mail {
+        max-width: 100%;
+    }
+
+    .form-form input {
+        padding: 13px;
+    }
+
+    .cta,
+    #signIn {
+        width: 100%;
+    }
+}
+
+    
+}

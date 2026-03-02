@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+
+    <div>
+       <button type="button" id="logout">Logout</button>
+    </div>
+    
+    <header  id="user-dashboard">
+        
+    </header>
+
+    
+
+
+    <section class="balance-part">
+        <h2 class="balance-h2">Current Balance</h2>
+
+        <h3  class="balance-h3" id="balance"></h3>
+    </section>
+
+
+    <section id="services">
+
+        <div class="grid-child" id="deposit-child">
+
+            <div class="flex-child">
+                <i class="fa-solid fa-money-bill-wave service-icon"></i>
+                <h2>Deposit</h2>
+            </div>
+
+            <p class="service-p">Add funds to your account</p>
+
+        </div>
+
+        <div class="grid-child" id="withdraw-child">
+
+            <div class="flex-child">
+                <i class="fa-solid fa-hand-holding-dollar service-icon"></i>
+                <h2>Withdraw</h2>
+            </div>
+
+            <p class="service-p">Take money out of your account</p>
+        </div>
+
+        <div class="grid-child" id="transfer-child">
+
+            <div class="flex-child">
+                <i class="fa-solid fa-right-left service-icon"></i>
+                <h2>Transfer</h2>
+            </div>
+
+            <p class="service-p">Send money to another user</p>
+        </div>
+
+        <div class="grid-child" id="save-child">
+            <div class="flex-child">
+                <i class="fa-solid fa-piggy-bank service-icon"></i>
+                <h2>Airtime</h2>
+            </div>
+
+            <p class="service-p">Buy Airtime on your mobile number.</p>
+        </div>
+
+        <div class="grid-child" id="loan-child">
+            <div class="flex-child">
+                <i class="fa-solid fa-landmark service-icon"></i>
+                <h2>Loan</h2>
+            </div>
+
+            <p class="service-p">Get loan when you're illiquid.</p>
+        </div>
+
+        
+        <!--  -->
+
+
+        <div class="pop-in" id="deposit">
+            <h1>Deposit funds</h1> <br>
+            <label for="">Amount</label> <br>
+            <input type="number" id="depositAmount" placeholder="0.00"><br>
+            <label id="avail-bal" for="">Available balance: </label><br>
+            <button id="confirmDeposit" style=" color: white; background-color: rgba(35, 50, 217, 0.884);">Deposit</button><br>
+            <button id="cancelDeposit" ">Cancel</button><br>
+        </div>
+
+        <div class="pop-in" id="withdraw">
+            <h1>Withdraw funds</h1> <br>
+            <label for="">Amount</label> <br>
+            <input type="number" id="withdraw-amount" placeholder="0.00"><br>
+            <label for="" id="withd-avail-bal" >Available balance: $</label><br>
+            <button id="withdrawBtn" style=" color: white; background-color: rgb(26, 26, 178);">Withdraw</button><br>
+            <button id="cancelWithdrawal"">Cancel</button><br>
+        </div>
+
+        <div class="pop-in" id="transfer">
+            <h1>Transfer money</h1> <br>
+            <label for="">Receipent Account Number</label>
+            <input type="number" id="recipient-account-number" placeholder="1234567890">
+            <label for="">Amount</label> <br>
+            <input type="number" id="transfer-amount" placeholder="0.00"><br>
+            <label id="transfer-avail-bal">Available balance: $<span id="trans-avail-bal">0</span></label><br>
+            <button id="transferBtn" style="color: white; background-color: rgb(26, 49, 178);">Transfer</button><br>
+            <button id="cancelTransfer">Cancel</button><br>
+        </div>
+
+        <div class="pop-in" id="savings">
+            <h1>Airtime</h1> <br>
+            <label for="">Amount</label> <br>
+            <input id="airtime-inp" type="number" placeholder="0.00"><br>
+            <label id="avail-bal" for="">Available balance: $</label><br>
+            <button id="airtime-btn" style="color: white; background-color: rgb(26, 49, 178);">Buy Airtime</button><br>
+            <button id="cancelSavings">Cancel</button><br>
+        </div>
+
+        <div class="pop-in" id="loan">
+            <h1>Grab a Loan and Bounce back.</h1> <br>
+            <label for="">Amount</label> <br>
+            <input type="number" id="loan-input" placeholder="0.00"><br>
+            <label id="loan-avail-bal" for="">Available balance: $</label><br>
+            <button id="get-loan" style=" color: white; background-color: rgb(26, 49, 178);">Get Loan</button><br>
+            <button id="cancelLoan">Cancel</button><br>
+        </div>
+
+    </section>
+
+   
+   
+    <!-- transacton history -->
+    <section class="transacton-part" id="transaction-container">
+        <h1>Transcation History</h1>
+
+
+        <p class="transaction-p">No transacton yet</p>
+    </section>
+
+
+
+
+    <!--  -->
+    <div id="overlay"></div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script type="module" src="../script/dashboard.js"></script>
+</body>
+</html>
