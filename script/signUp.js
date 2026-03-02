@@ -1,3 +1,18 @@
+// spinnerboard
+
+function startLoading(button, text) {
+    button.disabled = true;
+    button.dataset.originalText = button.innerHTML;
+    button.innerHTML = `${text} <span class="spinner"></span>`;
+}
+
+function stopLoading(button) {
+    button.disabled = false;
+    button.innerHTML = button.dataset.originalText;
+}
+
+// 
+// 
 document.body.style.backgroundColor = 'lightblue';
 
 let signUpForm = document.getElementById('signUp');
@@ -41,6 +56,10 @@ let signUpForm = document.getElementById('signUp');
 signUpForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     // alert('submitted');
+
+    // spinnerboard for signup button
+    const signUpBtn = document.getElementById("signUpBtn");
+    startLoading(signUpBtn, "Signing Up");  
 
     let userEmail = signUpForm.email.value;
     let userPassword = signUpForm.password.value;
@@ -154,6 +173,8 @@ signUpForm.addEventListener('submit', async (e) => {
             });
         }
         
+    } finally {
+        stopLoading(signUpBtn);
     }
 
 })

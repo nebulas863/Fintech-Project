@@ -1,4 +1,17 @@
+// spinner-board
+function startLoading(button, text = "Processing") {
+    button.disabled = true;
+    button.dataset.originalText = button.innerHTML;
+    button.innerHTML = `${text} <span class="spinner"></span>`;
+}
 
+function stopLoading(button) {
+    button.disabled = false;
+    button.innerHTML = button.dataset.originalText;
+}
+
+
+// 
 // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
 
@@ -133,13 +146,13 @@ onAuthStateChanged(auth, async (user) => {
     userDisplay.innerHTML = `
         <div>
             
-            <h1>Welcome ${userData.name}!</h1>
-            <h2>${userData.email}</h2>
+            <h1 style="color: rgb(14, 56, 207);">Welcome ${userData.name}!</h1>
+            <h2 style="color: rgb(12, 47, 90);">${userData.email}</h2>
         
         </div>
 
         <div>
-            <h2>Account number: ${userData.accountNumber}</h2>
+            <h2 style="color: rgb(183, 9, 38);">Account number: ${userData.accountNumber}</h2>
         </div>
 
 
@@ -153,6 +166,9 @@ onAuthStateChanged(auth, async (user) => {
   let logOut = document.getElementById("logout");
 
     logOut.addEventListener('click', async (e) => {
+
+        startLoading(logOut, "Logging out");
+
         e.preventDefault();
 
         try {
@@ -189,6 +205,8 @@ onAuthStateChanged(auth, async (user) => {
                 icon: "error"
             });
             
+        } finally {
+            stopLoading(logOut);
         }
         
     
@@ -266,6 +284,7 @@ onAuthStateChanged(auth, async (user) => {
 
         const userRef = doc(db, "users", user.uid);
 
+        startLoading(confirmDeposit);
         try {
 
             await runTransaction(db, async (transaction) => {
@@ -326,6 +345,8 @@ onAuthStateChanged(auth, async (user) => {
             text: error,
             icon: "error"
         });
+    } finally {
+        stopLoading(confirmDeposit);
     }
 
     });
@@ -361,6 +382,8 @@ let withdrawAmountInp = document.getElementById("withdraw-amount");
 withdrawBtn.addEventListener("click", async () => {
     const withdrawAmount = Number(withdrawAmountInp.value);
 
+    startLoading(withdrawBtn);
+    
     if (withdrawAmount <= 0 || isNaN(withdrawAmount)) {
         Swal.fire({
             title: "Invalid Amount",
@@ -432,6 +455,8 @@ withdrawBtn.addEventListener("click", async () => {
     } catch (error) {
         console.log(error.message);
         
+    } finally {
+        stopLoading(withdrawBtn);
     }
 });
 
@@ -460,6 +485,7 @@ cancelTransferBtn.addEventListener("click", ()=> {
     overlay.style.display = 'none';
 })
 
+
 // Transfer logic will go here
 
 const transferBtn = document.getElementById("transferBtn");
@@ -470,6 +496,8 @@ const transferAvailableBalance = document.getElementById("transfer-avail-bal");
 let currentBalance = 0;
 
 transferBtn.addEventListener("click", async () => {
+
+    startLoading(transferBtn);
 
     const amount = Number(transferAmountInput.value);
     const recipientAccountNumber = Number(recipientInput.value.trim());
@@ -597,6 +625,8 @@ transferBtn.addEventListener("click", async () => {
 
         alert(error.message);
         
+    } finally {
+        stopLoading(transferBtn);
     }
 
 })
@@ -635,7 +665,11 @@ cancelSavingsBtn.addEventListener("click", ()=> {
 let airtimeBtn = document.getElementById("airtime-btn");
 let airtimeAmountInput = document.getElementById("airtime-inp")
 
+
+
 airtimeBtn.addEventListener("click", async () =>{
+
+    startLoading(airtimeBtn);
 
     const amount = Number(airtimeAmountInput.value);
 
@@ -709,7 +743,11 @@ airtimeBtn.addEventListener("click", async () =>{
             icon: "error"
         });
         
+    } finally {
+        stopLoading(airtimeBtn);
     }
+
+
 
 })
 
@@ -748,6 +786,9 @@ cancelLoanBtn.addEventListener("click", ()=> {
 let getLoanBtn = document.getElementById("get-loan");
 
 getLoanBtn.addEventListener("click", async () => {
+
+    // spinnerboard
+    startLoading(getLoanBtn);
 
     const loanAmount = Number(document.getElementById("loan-input").value);
 
@@ -836,6 +877,8 @@ getLoanBtn.addEventListener("click", async () => {
             icon: "error"
         });
 
+    } finally {
+        stopLoading(getLoanBtn);
     }
 
 });

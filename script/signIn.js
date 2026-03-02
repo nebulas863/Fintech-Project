@@ -1,3 +1,18 @@
+// spinner board
+
+function startLoading(button, text) {
+    button.disabled = true;
+    button.dataset.originalText = button.innerHTML;
+    button.innerHTML = `${text} <span class="spinner"></span>`;
+}
+
+function stopLoading(button) {
+    button.disabled = false;
+    button.innerHTML = button.dataset.originalText;
+}
+// 
+
+
 document.body.style.backgroundColor = 'white';
 
 // document.body.style.backgroundColor = 'lightblue';
@@ -41,8 +56,14 @@ let signInForm = document.getElementById('signIn');
 //   add eventListener
 
 signInForm.addEventListener('submit', async (e) => {
+    
     e.preventDefault();
     // alert('submitted');
+
+    // for spinner board
+    const signInBtn = document.getElementById("signInBtn");
+
+    startLoading(signInBtn, "Signing in");
 
     let userEmail = signInForm.email.value;
     let userPassword = signInForm.password.value;
@@ -108,8 +129,8 @@ signInForm.addEventListener('submit', async (e) => {
         }
 
         
-        
-        
+    } finally {
+        stopLoading(signInBtn);
     }
 
 })
