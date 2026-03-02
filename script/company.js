@@ -1,5 +1,5 @@
 directBtn = () => {
-    window.location.href = "../pages/signUp.html";
+    window.location.href = "../pages/signup.html";
 } 
 
 function openToggle() {
