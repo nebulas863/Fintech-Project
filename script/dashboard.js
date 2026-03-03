@@ -398,7 +398,7 @@ let withdrawAmountInp = document.getElementById("withdraw-amount");
 withdrawBtn.addEventListener("click", async () => {
     const withdrawAmount = Number(withdrawAmountInp.value);
 
-    startLoading(withdrawBtn);
+    // startLoading(withdrawBtn);
     
     if (withdrawAmount <= 0 || isNaN(withdrawAmount)) {
         Swal.fire({
@@ -408,6 +408,17 @@ withdrawBtn.addEventListener("click", async () => {
         });
         return;
     }
+
+    if (withdrawAmount > Number(balance.textContent.replace('$', ''))) {
+        Swal.fire({
+            title: "Invalid Amount",
+            text: "Insufficient funds.",
+            icon: "warning"
+        });
+        return;
+    }
+
+    startLoading(withdrawBtn);
 
     const user = auth.currentUser;
 
