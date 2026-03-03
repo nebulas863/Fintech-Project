@@ -10,6 +10,22 @@ function stopLoading(button) {
     button.innerHTML = button.dataset.originalText;
 }
 
+// hide and show balance
+
+const toggleBalanceBtn = document.getElementById("toggleBalance");
+const balanceText = document.getElementById("balance");
+
+let isVisible = true;
+
+toggleBalanceBtn.addEventListener("click", () => {
+    isVisible = !isVisible;
+
+    balanceText.classList.toggle("hidden");
+
+    toggleBalanceBtn.classList.toggle("fa-eye");
+    toggleBalanceBtn.classList.toggle("fa-eye-slash");
+});
+
 
 // 
 // Import the functions you need from the SDKs you need

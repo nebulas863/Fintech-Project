@@ -22,7 +22,16 @@ header {
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
+    
 }
+
+/* hide balance */
+
+.hidden {
+    filter: blur(10px);
+}
+
+/*  */
 
 #logout {
     padding: 10px 15px;
