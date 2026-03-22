@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../style/admin.css" />
+  </head>
+
+  <body>
+    <div class="admin-container">
+      <!-- Sidebar -->
+      <div class="sidebar">
+
+        <div class="sidebar-header">
+            <h2>Fintech Admin</h2>
+
+
+            <div id="menuToggle" class="hamburger">
+              ☰
+            </div>
+
+        </div>
+
+
+        <ul id="sidebarMenu">
+          <li id="dashboardTab">Dashboard</li>
+          <li id="usersTab">Users</li>
+          <li id="transactionsTab">Transactions</li>
+          <li id="logoutAdmin">Logout</li>
+        </ul>
+      </div>
+
+      <div class="main-content">
+        <!-- <h1>Admin Dashboard</h1> -->
+
+        <!-- DASHBOARD SECTION -->
+        <div id="dashboardSection">
+          <div class="stats">
+            <div class="card">
+              <h3>Total Users</h3>
+              <p id="totalUsers">0</p>
+            </div>
+
+            <div class="card">
+              <h3>Total Balance</h3>
+              <p id="totalBalance">$0</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- USERS SECTION -->
+        <div id="usersSection">
+          <h2>Users</h2>
+
+          <table>
+            <thead style="color: #1a61b2">
+              <tr>
+                <th>Name</th>
+                <th class="see">Account Number</th>
+                <th>Balance</th>
+                <th>Role</th>
+                <th class="seee">Action</th>
+                <th class="seen">Freeze</th>
+              </tr>
+            </thead>
+
+            <tbody id="usersTable"></tbody>
+          </table>
+        </div>
+
+        <!-- TRANSACTIONS SECTION -->
+        <div id="transactionsSection" style="display: none">
+          <h2>Transactions</h2>
+
+          <table>
+            <thead style="color: #1a61b2">
+              <tr>
+                <th>User</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+
+            <tbody id="transactionsTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script type="module" src="../script/admin.js"></script>
+  </body>
+</html>

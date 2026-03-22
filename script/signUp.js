@@ -64,23 +64,73 @@ signUpForm.addEventListener('submit', async (e) => {
     let userEmail = signUpForm.email.value;
     let userPassword = signUpForm.password.value;
     let userConfpassword = signUpForm.confpassword.value;
-    let userName = signUpForm.username.value;
+    // let userName = signUpForm.username.value;
+    let lastName = signUpForm.lastname.value;
+    let firstName = signUpForm.firstname.value;
     let userPhone = signUpForm.phone.value;
 
     // let userAccountNumber = Math.floor(1000000000 + Math.random() * 9000000000);
         let userAccountNumber = Math.floor(1000000000 + Math.random() * 9000000000);
         console.log(userAccountNumber);
 
-    console.log(userEmail,userConfpassword,userPhone,userName,userPassword);
+    console.log(userEmail,userConfpassword,userPhone,firstName,lastName,userPassword);
     
 
     try {
+
+        // if (userName.includes("@",".",",","$","&","!","#","%","/","?","<",">")) {
+        //     Swal.fire ({
+        //         title: "Invalid Name",
+        //         text: "Name should not contain symbols",
+        //         icon: "error"
+        //     });
+        //     return;
+        // }
+
+        if (lastName.includes("@",".",",","$","&","!","#","%","/","?","<",">")) {
+            Swal.fire ({
+                title: "Invalid lastName",
+                text: "Name should not contain symbols",
+                icon: "error"
+            });
+            return;
+        }
+
+        if (firstName.includes("@",".",",","$","&","!","#","%","/","?","<",">")) {
+            Swal.fire ({
+                title: "Invalid firstName",
+                text: "Name should not contain symbols",
+                icon: "error"
+            });
+            return;
+        }
 
         if (userPassword.length < 6) {
             Swal.fire({
                 title: "Weak Password",
                 text: "Password must be at least 6 characters.",
                 icon: "warning"
+            });
+            return;
+        }
+
+        // if (!userPassword.includes("@",".","$","&","#","%","1","2","3","4","5","6","7","8","9","0")) {
+        //     Swal.fire ({
+        //         title: "Invalid password",
+        //         text: "password should contain a special character and a number",
+        //         icon: "error"
+        //     });
+        //     return;
+        // }
+
+        const hasNumber = /\d/.test(userPassword); // checks for number
+        const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(userPassword); // checks special char
+
+        if (!hasNumber && !hasSpecial) {
+            Swal.fire({
+                title: "Weak Password",
+                text: "Password must contain at least a number or a special character.",
+                icon: "error"
             });
             return;
         }
@@ -122,7 +172,9 @@ signUpForm.addEventListener('submit', async (e) => {
         // });
 
         const userQuerySnapshot = await setDoc(doc(db, "users", createUser.user.uid), {
-            name:userName,
+            name:firstName + " " + lastName,
+            firstname: firstName,
+            lastname: lastName,
             phone:userPhone,
             email:userEmail,
             password:userPassword,
@@ -134,7 +186,8 @@ signUpForm.addEventListener('submit', async (e) => {
             loanAmount: 0,
             loanInterest: 0,
             loanTotal: 0,
-            loanTakenAt: null
+            loanTakenAt: null,
+            status: "active" | "frozen",
         });
             
        
@@ -144,7 +197,7 @@ signUpForm.addEventListener('submit', async (e) => {
         // alert('User created successfully');
 
         Swal.fire({
-            title: `Welcome ${userName}!`,
+            title: `Welcome ${firstName}!`,
             text: "You have successfully signed up!",
             icon: "success"
         }).then(() => {

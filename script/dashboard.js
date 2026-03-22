@@ -1,3 +1,5 @@
+
+
 // spinner-board
 function startLoading(button, text = "Processing") {
     button.disabled = true;
@@ -68,7 +70,9 @@ onAuthStateChanged(auth, (user) => {
     if (!user) {
         window.location.href = "../pages/signIn.html";
     }
+
 });
+
 
 
 //   get docs to display user name and email
@@ -88,6 +92,40 @@ onAuthStateChanged(auth, async (user) => {
     //     return;
         
     // }
+
+    //  ROLE-CHECK...... CHECK IF ROLE IS USER OR ADMIN
+
+        const userRef = doc(db, "users", user.uid);
+        const userSnap = await getDoc(userRef);
+
+        if (userSnap.exists()) {
+
+            const userData = userSnap.data();
+
+            // frozen account
+
+            if(userData.status === "frozen"){
+                // alert("Your account has been frozen");
+
+                await Swal.fire({
+                title: "Error",
+                text: "Your account has been frozen for violating one of our policies. Kindly speak with your Account Manager.",
+                icon: "error"
+            });
+                // 
+                window.location.href ="../pages/signIn.html"
+                return;
+}
+            // Check role
+            if (userData.role === "admin") {
+
+                window.location.href = "../pages/admin.html";
+                return;
+
+            }
+
+        }
+
 
     try {
 
@@ -162,7 +200,7 @@ onAuthStateChanged(auth, async (user) => {
     userDisplay.innerHTML = `
         <div>
             
-            <h1 style="color: rgb(14, 56, 207);">Welcome ${userData.name}!</h1>
+            <h1 style="color: rgb(14, 56, 207);">Welcome ${userData.firstname}!</h1>
             <h2 style="color: rgb(12, 47, 90);">${userData.email}</h2>
         
         </div>
@@ -389,6 +427,7 @@ cancelWithdrawalBtn.addEventListener("click", ()=> {
     withdrawDiv.style.display = 'none';
     overlay.style.display = 'none';
 })
+
 
 // WITHDRAW LOGIC
 let withdrawBtn = document.getElementById("withdrawBtn");
@@ -753,7 +792,7 @@ airtimeBtn.addEventListener("click", async () =>{
 
         Swal.fire({
             title: "Airtime Successful",
-            text: `₦${amount.toFixed(2)} sent to ${userData.phone}`,
+            text: `$${amount.toFixed(2)} sent to ${userData.phone}`,
             icon: "success"
         });
 
@@ -912,4 +951,93 @@ getLoanBtn.addEventListener("click", async () => {
 
 
 
-    
+    // loan Repayment
+
+    // ===============================
+// LOAN REPAYMENT
+// ===============================
+
+const repayLoanBtn = document.getElementById("repayLoanBtn");
+
+repayLoanBtn.addEventListener("click", async () => {
+
+    startLoading(repayLoanBtn, "Processing");
+
+    try {
+        // Always get user like this inside actions
+        const user = auth.currentUser;
+
+        if (!user) {
+            throw new Error("User not authenticated.");
+        }
+
+        const userRef = doc(db, "users", user.uid);
+        const userSnap = await getDoc(userRef);
+
+        if (!userSnap.exists()) {
+            throw new Error("User not found.");
+        }
+
+        const userData = userSnap.data();
+
+        // Your system uses loanStatus
+        if (userData.loanStatus !== "active") {
+            Swal.fire({
+                title: "No Active Loan",
+                text: "You don't have any active loan.",
+                icon: "info"
+            });
+            return;
+        }
+
+        const repaymentAmount = userData.loanTotal;
+
+        if (userData.balance < repaymentAmount) {
+            Swal.fire({
+                title: "Insufficient Balance",
+                text: "You don't have enough balance to repay this loan.",
+                icon: "warning"
+            });
+            return;
+        }
+
+        const newBalance = userData.balance - repaymentAmount;
+
+        await updateDoc(userRef, {
+            balance: newBalance,
+            loanStatus: null,
+            loanAmount: 0,
+            loanInterest: 0,
+            loanTotal: 0,
+            loanRepaymentTime: null
+        });
+
+        // Save transaction inside user subcollection
+        await addDoc(collection(db, "users", user.uid, "transactions"), {
+            type: "💸loan-repayment",
+            amount: -repaymentAmount,
+            createdAt: serverTimestamp()
+        });
+
+        Swal.fire({
+            title: "Loan Repaid ✅",
+            text: "Your loan has been successfully repaid.",
+            icon: "success"
+        });
+
+        // loan button reset
+
+        loanDiv.style.display = 'none';
+        overlay.style.display = 'none';
+
+    } catch (error) {
+        Swal.fire({
+            title: "Error",
+            text: error.message,
+            icon: "error"
+        });
+    } finally {
+        stopLoading(repayLoanBtn);
+    }
+
+});
